@@ -3,6 +3,9 @@ import './App.css';
 import './components/javascript/Single-threaded';
 import './components/javascript/OOPs';
 
+import {WelcomeDialog, CompositionLayout, CompositionWelcome, SignUpDialog}  from './components/react/Composition-Inheritance';
+import StatUpOne from './components/react/Problem-solving';
+
 function App() {
   return (
     <div className="app-container">
@@ -60,6 +63,22 @@ function App() {
               </ol>
             </li>
           </ol>
+        </li>
+      </ol>
+      <h1>React :</h1>
+      <ol>
+        <li>
+          React Composition vs Inheritance:
+          <p>React has a powerful composition model, and we recommend using composition instead of inheritance to reuse code between components.</p>
+          <WelcomeDialog />
+          <p>Different way:</p>
+          <CompositionWelcome/>
+          <CompositionLayout />
+          <SignUpDialog />
+        </li>
+        <li>
+          React problem solving:
+          <StatUpOne />
         </li>
       </ol>
     </div>
