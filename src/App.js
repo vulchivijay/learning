@@ -4,7 +4,8 @@ import './components/javascript/Single-threaded';
 import './components/javascript/OOPs';
 
 import {WelcomeDialog, CompositionLayout, CompositionWelcome, SignUpDialog}  from './components/react/Composition-Inheritance';
-import StatUpOne from './components/react/Problem-solving';
+import RHCheckboxWithLabel from './components/react/PS-RHooksCheckwithLabel';
+import RHTablewithSort from './components/react/PS-RHooksTable';
 
 function App() {
   return (
@@ -77,8 +78,17 @@ function App() {
           <SignUpDialog />
         </li>
         <li>
-          React problem solving:
-          <StatUpOne />
+          <p>React problem solving:</p>
+          <ol>
+            <li>
+              <p>React Hook - Check box with label (useState, useEffect, fakeapi call)</p>
+              <RHCheckboxWithLabel />
+            </li>
+            <li>
+              <p>React Hook - table data with sort (useState, useEffect, fakeapi call)</p>
+              <RHTablewithSort />
+            </li>
+          </ol>
         </li>
       </ol>
     </div>

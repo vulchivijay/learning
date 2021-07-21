@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const StatUpOne = () => {
+const RHCheckboxWithLabel = () => {
   let [todos, todosState] = useState([{ text: "Learn NextJS", done: false }]);
 
   let [updateTime, updateTimeState] = useState(() => new Date());
@@ -56,4 +56,4 @@ const TodoRender = ({ item, num }) => {
   );
 };
 
-export default StatUpOne;
+export default RHCheckboxWithLabel;
