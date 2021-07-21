@@ -1,7 +1,3 @@
-// Flow of lifecycle constructor() -> comonentdidmount() -> componentdidupdate() -> render()
-// useEffect()-> return ()
-// 1. load data to a table, click on the header that should be sorted
-
 import React, { useState, useEffect } from "react";
 
 export default function RHTablewithSort() {
@@ -14,12 +10,12 @@ export default function RHTablewithSort() {
 
   const fakeapi = () => {
     new Promise((result, reject) => {
-      //setTimeout(() => {
+      setTimeout(() => {
         result([
           { id: 2, firstname: "kumar", lastname: "vulchi"  },
           { id: 3, firstname: "vulchi", lastname: "vijay"  }
         ]);
-      //}, 3000);
+      }, 3000);
     }).then((result) => {
       setTable([...table, ...result]);
     });

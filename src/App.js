@@ -5,7 +5,7 @@ import './components/javascript/OOPs';
 
 import {WelcomeDialog, CompositionLayout, CompositionWelcome, SignUpDialog}  from './components/react/Composition-Inheritance';
 import RHCheckboxWithLabel from './components/react/PS-RHooksCheckwithLabel';
-import RHTablewithSort from './components/react/PS-RHooksTable';
+import RHTablewithSort from './components/react/PS-RHooksTableSort';
 
 function App() {
   return (
@@ -85,7 +85,7 @@ function App() {
               <RHCheckboxWithLabel />
             </li>
             <li>
-              <p>React Hook - table data with sort (useState, useEffect, fakeapi call)</p>
+              <p>React Hook - table data with sort firstname and last name column (useState, useEffect, fakeapi call)</p>
               <RHTablewithSort />
             </li>
           </ol>
