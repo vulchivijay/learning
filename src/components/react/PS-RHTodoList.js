@@ -4,11 +4,14 @@ export default function RHTodoList () {
   const [todos, setTodos] = useState([{subject: "hello", description: "testing", status: false, }]);
 
   const completeTask = (index) => {
-    console.log("Complete index: ", index)
+    todos[index].status = true;
+    setTodos([...todos]);
   }
 
   const deleteTask = (index) => {
-    console.log("delete index: ", index)
+    const subject = todos[index].subject;
+    const latestTodos = [...todos].filter((item) => item.subject !== subject);
+    setTodos(latestTodos);
   }
 
   const handleSubmit = (event) => {
@@ -71,15 +74,16 @@ export default function RHTodoList () {
 
 const Todo = ({data, index, com, del}) => {
   // console.log(com(index), del(index));
+  const localIndex = index + 1;
   return (
     <tr>
-      <td>{index+1}</td>
+      <td>{localIndex}</td>
       <td>{data.subject}</td>
       <td>{data.description}</td>
       <td>{data.status ? "done": "open"}</td>
       <td>
-        <button onClick={() => com(index)}>Complete</button>
-        <button onClick={() => del(index)}>Delete</button>
+        <button onClick={() => com(localIndex)}>Complete</button>
+        <button onClick={() => del(localIndex)}>Delete</button>
       </td>
     </tr>
   )
