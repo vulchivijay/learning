@@ -6,10 +6,13 @@ import './components/javascript/OOPs';
 import {WelcomeDialog, CompositionLayout, CompositionWelcome, SignUpDialog}  from './components/react/Composition-Inheritance';
 import RHCheckboxWithLabel from './components/react/PS-RHooksCheckwithLabel';
 import RHTablewithSort from './components/react/PS-RHooksTableSort';
+import RHTodoList from './components/react/PS-RHTodoList';
 
 function App() {
   return (
     <div className="app-container">
+      <h1>Demo</h1>
+      <RHTodoList />
       <h1>JavaScript :</h1>
       <ol>
         <li>

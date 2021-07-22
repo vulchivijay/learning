@@ -44,7 +44,7 @@ export default function RHTablewithSort() {
   );
 }
 
-const Row = ({data, key}) => {
+const Row = ({data}) => {
   return (
     <tr>
       <td>{data.id}</td>
