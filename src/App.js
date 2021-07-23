@@ -7,8 +7,8 @@ import {WelcomeDialog, CompositionLayout, CompositionWelcome, SignUpDialog}  fro
 import RHCheckboxWithLabel from './components/react/PS-RHooksCheckwithLabel';
 import RHTablewithSort from './components/react/PS-RHooksTableSort';
 import RHTodoList from './components/react/PS-RHTodoList';
-import ReactClassLifeCycles from './components/react/React-Class-LifeCycles';
-import ReactFunLifeCycles from './components/react/React-Hooks-LifeCycles';
+import ReactClassLifeCycles from './components/react/Class-LifeCycles';
+import ReactFunLifeCycles from './components/react/Hooks-LifeCycles';
 
 function App() {
   return (
