@@ -1,85 +1,139 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  useReducer,
+  useRef
+} from 'react';
+import './style.css';
 
-class API {
-  subscribeToFriendStatus(fun) {
-    return fun('');
+const themes = {
+  light: {
+    foreground: '#000000',
+    background: '#eeeeee'
+  },
+  dark: {
+    foreground: '#ffffff',
+    background: '#222222'
   }
-  unsubscribeFromFriendStatus(fun) {
-    return fun(null);
-  }
-}
+};
+
+const ThemeContext = React.createContext(themes.light);
+const initialState = { number: 0 };
 
 export default function App() {
   const [count, setCount] = useState(0);
-  // 1. Use the name state variable
-  const [name, setName] = useState('Mary');
-  // 3. Use the surname state variable
-  const [surname, setSurname] = useState('Poppins');
-
-  const [isOnline, setIsOnline] = useState(null);
-  const chatAPI = new API();
+  const [fruit, setFruit] = useState('banana');
 
   useEffect(() => {
-    setCount(count + 1);
-    console.log('use Effect 1: ', count);
+    console.log('use effect triggered!');
+    setFruit('apple');
   }, []);
 
-  useEffect(() => {
-    setCount(count + 2);
-    console.log('use Effect 2: ', count);
-  }, []);
+  console.log('render function called');
 
-  // 2. Use an effect for persisting the form
-  useEffect(function persistForm() {
-    console.log('local storage: persist form.');
-    // not breaking hook rule
-    if (name !== '') localStorage.setItem('formData', name);
-  });
-
-  // 4. Use an effect for updating the title
-  if (surname !== '') {
-    // breaking hook rule
-    useEffect(function updateTitle() {
-      console.log('update title');
-      document.title = name + ' ' + surname;
-    });
-  }
-
-  useEffect(() => {
-    function handleStatusChange(status) {
-      console.log('*** status *** ', status);
-      setIsOnline(status);
-    }
-    chatAPI.subscribeToFriendStatus(handleStatusChange);
-    return () => {
-      chatAPI.unsubscribeFromFriendStatus(handleStatusChange);
-    };
-  });
-
-  console.log('outside return function ', count);
-  if (isOnline === null) {
-    return 'Loading...';
-  }
   return (
     <div>
-      <h1>You clicked {count} times</h1>
-      <p>Name: {name}</p>
-      <p>Surname: {surname}</p>
-      <p>Full Name: </p>
-      {/* <button onClick={() => setCount(count + 1)}>Click me</button> */}
+      <p>Basic Hooks</p>
+      <ol>
+        <li>useState initial state: {count}</li>
+        <li>
+          useEffect initial <b>banana</b> after useeffect: <b>{fruit}</b>
+          <p>
+            useEffect runs asynchronously and after a render is painted to the
+            screen.
+          </p>
+          <p>
+            So that looks like: You cause a render somehow (change state, or the
+            parent re-renders) React renders your component (calls it) The
+            screen is visually updated THEN useEffect runs
+          </p>
+        </li>
+        <li>
+          useContext
+          <ThemeContext.Provider value={themes.dark}>
+            <Toolbar />
+          </ThemeContext.Provider>
+        </li>
+      </ol>
+      <p>Additional Hooks</p>
+      <ol>
+        <li>
+          useReducer: <Counter />
+        </li>
+        <li>useCallback: </li>
+        <li>
+          useRef: <TextInputWithFocusButton />
+        </li>
+        <li>useMemo: </li>
+        <li>useImperativeHandle</li>
+        <li>
+          useLayoutEffect
+          <p>
+            useLayoutEffect, on the other hand, runs synchronously after a
+            render but before the screen is updated. That goes: You cause a
+            render somehow (change state, or the parent re-renders) React
+            renders your component (calls it) useLayoutEffect runs, and React
+            waits for it to finish. The screen is visually updated
+          </p>
+        </li>
+        <li>useDebugValue</li>
+      </ol>
     </div>
   );
 }
 
-// >> outside return function  0
-// >> use Effect 1:  0
-// >> use Effect 2:  0
-// >> local storage: persist form.
-// >> update title
-// >> *** status ***  
-// >> outside return function  2
-// >> *** status ***  null
-// >> local storage: persist form.
-// >> update title
-// >> *** status ***  
-// >> outside return function  2
+function Toolbar(props) {
+  return (
+    <div>
+      <ThemedButton />
+    </div>
+  );
+}
+
+function ThemedButton() {
+  const theme = useContext(ThemeContext);
+  return (
+    <button style={{ background: theme.background, color: theme.foreground }}>
+      I am styled by theme context!
+    </button>
+  );
+}
+
+function reducer(state, action) {
+  console.log(state);
+  switch (action.type) {
+    case 'increment':
+      return { number: state.number + 1 };
+    case 'decrement':
+      return { number: state.number - 1 };
+    default:
+      throw new Error();
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return (
+    <>
+      {state.number}{' '}
+      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+      {'  '}
+      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+    </>
+  );
+}
+
+function TextInputWithFocusButton() {
+  const inputEl = useRef(null);
+  const onButtonClick = () => {
+    // `current` points to the mounted text input element
+    inputEl.current.focus();
+  };
+  return (
+    <>
+      <input ref={inputEl} type="text" />
+      <button onClick={onButtonClick}>Focus the input</button>
+    </>
+  );
+}
