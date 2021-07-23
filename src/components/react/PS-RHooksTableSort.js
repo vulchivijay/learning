@@ -4,7 +4,6 @@ export default function RHTablewithSort() {
   const [table, setTable] = useState([{ id: 1, firstname: "vijay", lastname: "kumar" }]);
 
   useEffect(() => {
-    console.log("test")
     fakeapi();
   }, []);
 

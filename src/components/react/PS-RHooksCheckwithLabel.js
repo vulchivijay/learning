@@ -28,7 +28,6 @@ const RHCheckboxWithLabel = () => {
     todos.push({ text: "Some more todosss", done: false });
     todosState([...todos]);
     updateTimeState(new Date());
-
   };
 
   return (

@@ -11,8 +11,6 @@ import RHTodoList from './components/react/PS-RHTodoList';
 function App() {
   return (
     <div className="app-container">
-      <h1>Demo</h1>
-      <RHTodoList />
       <h1>JavaScript :</h1>
       <ol>
         <li>
@@ -81,7 +79,15 @@ function App() {
           <SignUpDialog />
         </li>
         <li>
-          <p>React problem solving:</p>
+          <p>React problem solving using React Class:</p>
+          <ol>
+            <li>
+              <p>React Class - Todo list with add, delete, complete task options (state, componentdidmount)</p>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <p>React problem solving using React Hooks:</p>
           <ol>
             <li>
               <p>React Hook - Check box with label (useState, useEffect, fakeapi call)</p>
@@ -90,6 +96,10 @@ function App() {
             <li>
               <p>React Hook - table data with sort firstname and last name column (useState, useEffect, fakeapi call)</p>
               <RHTablewithSort />
+            </li>
+            <li>
+              <p>React Hook - Todo List with add, delete, complete task options (useState, useEffect)</p>
+              <RHTodoList />
             </li>
           </ol>
         </li>
