@@ -1,6 +1,6 @@
 import React from 'react';
 
-class App extends React.Component {
+class ReactClassLifeCycles extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -69,20 +69,26 @@ class App extends React.Component {
     console.log('render ', this.state);
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>;
+      return <p>Something went wrong.</p>;
     }
-    return <div>Hello {this.state}</div>;
+    return (
+      <div>
+        <p>Hello {this.state.count}</p>
+        <ol>
+          <li>constructor:  count: 0, hasError: false</li>
+          <li>get derived state from props: props, state:  empty object, count: 0, hasError: false</li>
+          <li>render:  count: 0, hasError: false}</li>
+          <li>component did mount:  count: 0, hasError: false</li>
+          <li>get derived state from props: props, state:  empty object, count: 1, hasError: false</li>
+          <li>should component update:  empty object, count: 1, hasError: false</li>
+          <li>render:  count: 1, hasError: false</li>
+          <li>get snap shotbefore update previous props, state:  empty object, count: 0, hasError: false</li>
+          <li>component did update:  count: 1, hasError: false</li>
+        </ol>
+        <p></p>
+      </div>
+    )
   }
 }
 
-export default App;
-
-// >> constructor:  {count: 0, hasError: false}
-// >> get derived state from props: props, state:  {} {count: 0, hasError: false}
-// >> render:  {count: 0, hasError: false}
-// >> component did mount:  {count: 0, hasError: false}
-// >> get derived state from props: props, state:  {} {count: 1, hasError: false}
-// >> should component update:  {} {count: 1, hasError: false}
-// >> render:  {count: 1, hasError: false}
-// >> get snap shotbefore update previous props, state:  {} {count: 0, hasError: false}
-// >> component did update:  {count: 1, hasError: false}
+export default ReactClassLifeCycles;

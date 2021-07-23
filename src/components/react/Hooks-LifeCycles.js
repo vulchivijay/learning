@@ -5,7 +5,6 @@ import React, {
   useReducer,
   useRef
 } from 'react';
-import './style.css';
 
 const themes = {
   light: {
@@ -21,7 +20,7 @@ const themes = {
 const ThemeContext = React.createContext(themes.light);
 const initialState = { number: 0 };
 
-export default function App() {
+export default function ReactFunLifeCycles() {
   const [count, setCount] = useState(0);
   const [fruit, setFruit] = useState('banana');
 
@@ -79,6 +78,7 @@ export default function App() {
         </li>
         <li>useDebugValue</li>
       </ol>
+      <p></p>
     </div>
   );
 }

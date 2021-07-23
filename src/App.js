@@ -7,6 +7,8 @@ import {WelcomeDialog, CompositionLayout, CompositionWelcome, SignUpDialog}  fro
 import RHCheckboxWithLabel from './components/react/PS-RHooksCheckwithLabel';
 import RHTablewithSort from './components/react/PS-RHooksTableSort';
 import RHTodoList from './components/react/PS-RHTodoList';
+import ReactClassLifeCycles from './components/react/React-Class-LifeCycles';
+import ReactFunLifeCycles from './components/react/React-Hooks-LifeCycles';
 
 function App() {
   return (
@@ -69,6 +71,14 @@ function App() {
       </ol>
       <h1>React :</h1>
       <ol>
+        <li>
+          React Class component lifecycle
+          <ReactClassLifeCycles />
+        </li>
+        <li>
+          React function component lifecycle
+          <ReactFunLifeCycles />
+        </li>
         <li>
           React Composition vs Inheritance:
           <p>React has a powerful composition model, and we recommend using composition instead of inheritance to reuse code between components.</p>

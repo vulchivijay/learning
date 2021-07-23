@@ -19,7 +19,7 @@ export default function App() {
       .then(function(data) {
         // Log the data to the console
         // You would do something with both sets of data here
-        setMulti(data);
+        setMulti(data); // return array of results of each api call 
       })
       .catch(function(error) {
         // if there's an error, log it
