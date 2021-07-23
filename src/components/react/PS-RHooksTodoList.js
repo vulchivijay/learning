@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
-export default function RHTodoList () {
-  const [todos, setTodos] = useState([{subject: "hello", description: "testing", status: false, }]);
+export default function RHooksTodoList () {
+  const [todos, setTodos] = useState([{subject: "hello", description: "testing", status: false}]);
 
   const completeTask = (index) => {
     todos[index].status = true;

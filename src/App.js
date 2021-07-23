@@ -6,7 +6,8 @@ import './components/javascript/OOPs';
 import {WelcomeDialog, CompositionLayout, CompositionWelcome, SignUpDialog}  from './components/react/Composition-Inheritance';
 import RHCheckboxWithLabel from './components/react/PS-RHooksCheckwithLabel';
 import RHTablewithSort from './components/react/PS-RHooksTableSort';
-import RHTodoList from './components/react/PS-RHTodoList';
+import RClassTodoList from './components/react/PS-RClassTodoList';
+import RHooksTodoList from './components/react/PS-RHooksTodoList';
 import ReactClassLifeCycles from './components/react/Class-LifeCycles';
 import ReactFunLifeCycles from './components/react/Hooks-LifeCycles';
 
@@ -93,6 +94,7 @@ function App() {
           <ol>
             <li>
               <p>React Class - Todo list with add, delete, complete task options (state, componentdidmount)</p>
+              <RClassTodoList />
             </li>
           </ol>
         </li>
@@ -109,7 +111,7 @@ function App() {
             </li>
             <li>
               <p>React Hook - Todo List with add, delete, complete task options (useState, useEffect)</p>
-              <RHTodoList />
+              <RHooksTodoList />
             </li>
           </ol>
         </li>
