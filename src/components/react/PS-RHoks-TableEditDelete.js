@@ -27,7 +27,7 @@ export default function App() {
             empid: 'E004'
           }
         ]);
-      }, 5000);
+      }, 1000);
     }).then(result => {
       setData([...result]);
       setLoading(true);
@@ -39,15 +39,42 @@ export default function App() {
   }, []);
 
   const handleEdit = (index, action) => {
-    if (action === 'Update') setshowField(-1);
-    else setshowField(index);
+    if (action === 'Update') {
+      setshowField(-1);
+    } else {
+      setshowField(index);
+    }
+  };
+
+  const changeName = (event, index) => {
+    const newData = data.map((item, pos) => {
+      if (index === pos) {
+        item.name = event.target.value;
+      }
+      return item;
+    });
+    setData([...newData]);
+  };
+
+  const changeEmpId = (event, index) => {
+    const newData = data.map((item, pos) => {
+      if (index === pos) {
+        item.empid = event.target.value;
+      }
+      return item;
+    });
+    setData([...newData]);
   };
 
   const handleDelete = index => {
     console.log(index);
+    const name = data[index].name;
+    const latestData = [...data].filter(item => item.name !== name);
+    setData([...latestData]);
   };
 
   if (loading) {
+    console.log('data', data);
     return (
       <React.Fragment>
         <table>
@@ -55,7 +82,7 @@ export default function App() {
             <tr>
               <th>Name</th>
               <th>Emp ID</th>
-              <th colspan="2">Controllers</th>
+              <th colSpan="2">Controllers</th>
             </tr>
           </thead>
           <tbody>
@@ -67,6 +94,9 @@ export default function App() {
                       type="text"
                       value={item.name}
                       disabled={showField === index ? false : true}
+                      onChange={() => {
+                        changeName(event, index);
+                      }}
                     />
                   </td>
                   <td>
@@ -74,6 +104,9 @@ export default function App() {
                       type="text"
                       value={item.empid}
                       disabled={showField === index ? false : true}
+                      onChange={() => {
+                        changeEmpId(event, index);
+                      }}
                     />
                   </td>
                   <td className="edit">
@@ -102,4 +135,3 @@ export default function App() {
     return <p>Loading...</p>;
   }
 }
-
