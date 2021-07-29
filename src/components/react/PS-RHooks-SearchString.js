@@ -62,7 +62,7 @@ export default function App() {
   return (
     <div>
       <div className="search">
-        <input type="search" onChange={() => handleSearch(event)} />
+        <input type="search" placeholder="Search" onChange={() => handleSearch(event)} />
       </div>
       {searchResult
         ? result.map((item, index) => {
