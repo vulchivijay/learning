@@ -67,7 +67,6 @@ export default function App() {
   };
 
   const handleDelete = index => {
-    console.log(index);
     const name = data[index].name;
     const latestData = [...data].filter(item => item.name !== name);
     setData([...latestData]);
