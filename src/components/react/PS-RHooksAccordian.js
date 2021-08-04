@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import './style.css';
 
-export default function App() {
+export default function RHooksAccordian() {
   const [active, setActive] = useState(-1);
   const accordian = [
     {
@@ -35,8 +34,8 @@ export default function App() {
             >
               <div className="accordian-title">{item.title}</div>
               <div className="accordian-content">
-                {item.paras.map(para => {
-                  return <p>{para}</p>;
+                {item.paras.map( (para, index) => {
+                  return <p key={index}>{para}</p>;
                 })}
               </div>
             </li>
@@ -54,64 +53,3 @@ export default function App() {
 //     return <p>{para}</p>;
 //   });
 // };
-
-
-// Styles
-
-h1,
-p {
-  font-family: Lato;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  list-style: none;
-  margin-bottom: 5px;
-}
-
-li div {
-  padding: 5px 15px;
-}
-
-.accordian {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.accordian-title {
-  position: relative;
-  text-transform: capitalize;
-  margin-bottom: 1px;
-  background-color: #000;
-  color: #fff;
-  cursor: pointer;
-}
-
-.accordian-title::after {
-  content: '+';
-  position: absolute;
-  right: 15px;
-}
-
-.accordian-content {
-  display: none;
-  background-color: #333;
-  color: #fff;
-}
-
-.accordian-content p {
-  text-transform: capitalize;
-  font-size: 14px;
-}
-
-li.active .accordian-title::after {
-  content: '-';
-}
-
-li.active .accordian-content {
-  display: block;
-}

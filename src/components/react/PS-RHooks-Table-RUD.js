@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './style.css';
 
-export default function App() {
+export default function RHooksTableRUD() {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
   const [showField, setshowField] = useState(-1);
@@ -73,7 +72,6 @@ export default function App() {
   };
 
   if (loading) {
-    console.log('data', data);
     return (
       <React.Fragment>
         <table>
@@ -93,7 +91,7 @@ export default function App() {
                       type="text"
                       value={item.name}
                       disabled={showField === index ? false : true}
-                      onChange={() => {
+                      onChange={(event) => {
                         changeName(event, index);
                       }}
                     />
@@ -103,7 +101,7 @@ export default function App() {
                       type="text"
                       value={item.empid}
                       disabled={showField === index ? false : true}
-                      onChange={() => {
+                      onChange={(event) => {
                         changeEmpId(event, index);
                       }}
                     />

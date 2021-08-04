@@ -9,6 +9,8 @@ function FHuman (firstname, lastname) {
 
 let kumar = new FHuman("kumar", "vulchi");
 
+console.log("Typeof FHuman is: ", typeof FHuman); // fun
+console.log("Typeof kumar is: ", typeof kumar) // object
 console.info("Using Constructor functions: kumar is instance of Function Human")
 console.log("firstname: ", kumar.firstname);
 console.log("lastname: ", kumar.lastname);
@@ -21,6 +23,9 @@ class CHuman {
 }
 
 let vijay = new CHuman("vijay", "kumar");
+
+console.log("Typeof CHuman is: ", typeof CHuman); // fun
+console.log("Typeof vijay is: ", typeof vijay) // object
 
 console.info("Using Class: vijay is instance of Class CHuman")
 console.log("firstname: ", vijay.firstname);
@@ -38,6 +43,9 @@ let OHuman = {
 let raju = Object.create(OHuman);
 
 raju.init("raju", "vulchi");
+
+console.log("Typeof OHuman is: ", typeof OHuman); // object
+console.log("Typeof raju is: ", typeof raju) // object
 
 console.info("Objects linking with another Objects: raju is instance of Object OHuman")
 console.log("firstname: ", raju.firstname);
@@ -122,6 +130,38 @@ console.log(haneesh.sayHello());
 console.log(haneesh.greetings());
 console.log(haneesh.sayHello());
 
+// Function defined in the class (not in the constructor) live on the class prototype which each instance is linked to.
+// Functions defined in the constructor become own properties of each instance. If you defined the function in the constructor,
+// each instance will get its own copy of the function. If you don't the instances will defer to the prototype chain and all the
+// instances will point to the same function.
+
+class Hud {
+  constructor(world) {
+      this.name = world
+      this.draw = function() {
+          console.log("draw on instance from", this.name)
+        }
+     }
+  draw_outside(){
+      console.log("draw on class from", this.name )
+  }
+}
+
+let h1 = new Hud('h1')
+let h2 = new Hud('h2')
+
+console.log("draw not on prototype: ", h1.__proto__.draw);
+console.log("draw_outside is: ", h1.__proto__.draw_outside);
+
+console.log("each object gets its own draw", h1.draw === h2.draw);
+console.log("but both point to the same draw_outside", h1.draw_outside === h2.draw_outside);
+
+console.log("only draw & name: ", Object.getOwnPropertyNames(h1));
+
+// both access `this` the same way when called on an instance:
+
+h1.draw()
+h1.draw_outside()
 
 class Person {
   constructor (fname, lname) {
@@ -143,6 +183,7 @@ Person.prototype.sings = function (song) {
 }
 
 console.log("we cannot define prototype methods to instace venkata. we can define methods to parent class or constructor.");
+
 // venkata.prototype.hobbies = function (hobby) { // throws error.
 //   return `${this.fname} hobbies are ${hobby}.`;
 // }

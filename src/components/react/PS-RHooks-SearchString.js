@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import './style.css';
 
-export default function App() {
+export default function SearchText() {
   const [data, setData] = useState([
     {
       title: 'Declarative',
@@ -60,9 +59,9 @@ export default function App() {
   };
 
   return (
-    <div>
-      <div className="search">
-        <input type="search" placeholder="Search" onChange={() => handleSearch(event)} />
+    <div className="search">
+      <div>
+        <input type="search" placeholder="Search" onChange={(event) => handleSearch(event)} />
       </div>
       {searchResult
         ? result.map((item, index) => {
@@ -79,29 +78,3 @@ export default function App() {
     </div>
   );
 }
-
-
-h1,
-p {
-  font-family: Lato;
-}
-
-p {
-  margin: 5px 0;
-  padding: 10px;
-}
-
-.row {
-  background-color: #e6e6e6;
-}
-
-.title {
-  background-color: #333;
-  color: #fff;
-}
-
-.description {
-  background-color: #444;
-  color: #fff;
-}
-

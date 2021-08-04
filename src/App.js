@@ -10,6 +10,9 @@ import RClassTodoList from './components/react/PS-RClassTodoList';
 import RHooksTodoList from './components/react/PS-RHooksTodoList';
 import ReactClassLifeCycles from './components/react/Class-LifeCycles';
 import ReactFunLifeCycles from './components/react/Hooks-LifeCycles';
+import RHooksAccordian from './components/react/PS-RHooksAccordian';
+import RHooksTableRUD from './components/react/PS-RHooks-Table-RUD';
+import SearchText from './components/react/PS-RHooks-SearchString';
 
 function App() {
   return (
@@ -112,6 +115,18 @@ function App() {
             <li>
               <p>React Hook - Todo List with add, delete, complete task options (useState, useEffect)</p>
               <RHooksTodoList />
+            </li>
+            <li>
+              <p>React Hook - Todo List with edit, update and delete task options (useState, useEffect)</p>
+              <RHooksTableRUD />
+            </li>
+            <li>
+              <p>React Hook - Accordian task (useState, useEffect)</p>
+              <RHooksAccordian />
+            </li>
+            <li>
+              <p>React Hook - Search string task (useState, useEffect)</p>
+              <SearchText />
             </li>
           </ol>
         </li>
